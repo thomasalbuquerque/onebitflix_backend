@@ -1,5 +1,6 @@
 // src/services/courseService.ts
 
+import { Op } from "sequelize"
 import { Course } from "../models"
 
 export const courseService = {
@@ -41,6 +42,23 @@ export const courseService = {
     const courses = await Course.findAll({
       limit: 10, //A quantidade de 10 cursos foi escolhida arbitrariamente, mas poderia facilmente ser um valor determinado na requisição para deixar o comportamento mais controlável.
       order: [['created_at', 'DESC']]
+    })
+
+    return courses
+  },
+
+  findByName: async (name: string, page: number, perPage: number) => {
+    const offset = (page - 1) * perPage
+
+    const courses = await Course.findAndCountAll({
+      attributes: ['id', 'name', 'synopsis', ['thumbnail_url', 'thumbnailUrl']],
+      where: {
+        name: {
+          [Op.iLike]: `%${name}%`
+        }
+      },
+        limit: perPage,
+        offset
     })
 
     return courses
