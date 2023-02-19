@@ -36,4 +36,13 @@ export const courseService = {
 
     return randomFeaturedCourses.slice(0, 3)
   },
+
+  getTopTenNewest: async () => {
+    const courses = await Course.findAll({
+      limit: 10, //A quantidade de 10 cursos foi escolhida arbitrariamente, mas poderia facilmente ser um valor determinado na requisição para deixar o comportamento mais controlável.
+      order: [['created_at', 'DESC']]
+    })
+
+    return courses
+  }
 }
