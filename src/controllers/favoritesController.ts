@@ -45,7 +45,7 @@ export const favoritesController = {
       return res.status(204).send()
     } catch (err) {
       if (err instanceof Error) {
-        return res.status(400).json({ message: err.message, linenumber: 47, userId: userId, courseId: courseId, NcourseId:  Number(courseId)})
+        return res.status(400).json({ message: err.message/*, linenumber: 47, userId: userId, courseId: courseId, NcourseId:  Number(courseId)*/})
       }      
     }
   }
