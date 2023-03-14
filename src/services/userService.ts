@@ -37,7 +37,8 @@ export const userService = {
         'phone',
         'birth',
         'email',
-        'password'
+        'password',
+        'created_at'
       ],
       where: { email }
     })
@@ -48,7 +49,7 @@ export const userService = {
     const user = await User.create(atributes)
     return user
   },
-  
+
   update: async (id: number, attributes: {
     firstName: string
     lastName: string
@@ -107,7 +108,7 @@ export const userService = {
     })
 
     if (!userWithWatchingEpisodes) throw new Error('Usuário não encontrado.')
-    
+
     const keepWatchingList = filterLastEpisodesByCourse(userWithWatchingEpisodes.Episodes!)
     // @ts-ignore
     keepWatchingList.sort((a, b) => a.watchTime.updatedAt < b.watchTime.updatedAt ? 1 : -1)
