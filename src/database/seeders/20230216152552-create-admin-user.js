@@ -1,6 +1,6 @@
 // src/database/seeders/XXXXXXXXXXXXXX-create-admin-user.js
 
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 'use strict';
 
