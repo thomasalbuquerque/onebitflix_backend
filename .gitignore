@@ -1,5 +1,7 @@
 node_modules/
-uploads/*
-public/thumbnails
+uploads/videos/
+public/thumbnails/
+.adminjs/
+dist/
 xignore/
 .env

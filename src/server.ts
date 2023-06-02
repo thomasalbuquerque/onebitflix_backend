@@ -1,3 +1,5 @@
+import dotenv from "dotenv"
+dotenv.config()
 import express from "express";
 import cors from "cors"
 import { adminJs, adminJsRouter } from "./adminjs";
@@ -6,26 +8,26 @@ import { router } from "./routes";
 
 const app = express()
 // load dependencies  
-const session = require("express-session");
+// const session = require("express-session");
 
 // initalize sequelize with session store
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
+// const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 // create database, ensure 'sqlite3' in your package.json 
-const myStore = new SequelizeStore({
-    db: sequelize,
-});
+// const myStore = new SequelizeStore({
+// db: sequelize,
+// });
 // configure express 
-app.use(
-    session({
-        secret: "this is a very good secret",
-        store: myStore,
-        resave: false, // we support the touch method so per the express-session docs this should be set to false
-        proxy: true, // if you do SSL outside of node.
-        saveUninitialized: false
-    })
-);
-myStore.sync()
+// app.use(
+//     session({
+//         secret: "this is a very good secret",
+//         store: myStore,
+//         resave: false, // we support the touch method so per the express-session docs this should be set to false
+//         proxy: true, // if you do SSL outside of node.
+//         saveUninitialized: false
+//     })
+// );
+// myStore.sync()
 
 app.use(cors())
 
